@@ -20,7 +20,7 @@ fn calibration_value(input: &str) -> i32 {
             ];
             let mut parsed = line.trim().to_owned();
             for (element, replacement) in written_numbers.iter() {
-                if parsed.contains(element) {
+                while parsed.contains(element) {
                     parsed = parsed.replace(element, replacement);
                 }
             }
