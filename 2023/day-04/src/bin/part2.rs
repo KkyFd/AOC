@@ -1,0 +1,44 @@
+/* later
+fn scratchcards_won(input: &str) -> i32 {
+    const SEPARATOR: &str = "|";
+    input.lines().enumerate().fold(0, |acc, (i, line)| {
+        let mut value = acc;
+        let game_number = i + 1;
+        //^ i'm lazy
+        let numbers = line
+            .split_whitespace()
+            .filter(|substr| substr.parse::<u32>().ok().is_some() || *substr == SEPARATOR)
+            .collect::<Vec<&str>>();
+        let index = numbers.iter().position(|v| *v == SEPARATOR).unwrap();
+        let winning = &numbers[0..index];
+        let owned = &numbers[(index + 1)..];
+        let mut counter = 0;
+        for stuff in winning {
+            if owned.contains(stuff) {
+                counter += 1
+            }
+        }   
+        
+        value
+    })
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn yeah() {
+        let test = scratchcards_won(
+            "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
+        Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
+        Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1
+        Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83
+        Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
+        Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11",
+        );
+
+        assert_eq!(test, 30);
+    }
+} */
+fn main() {}
